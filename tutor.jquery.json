@@ -1,0 +1,30 @@
+{
+  "name": "tutor",
+  "title": "jQuery Tutor",
+  "description": "",
+  "version": "1.0.0",
+  "author": {
+    "name": "Crocos Inc.",
+    "url": "https://github.com/crocos"
+  },
+  "maintainers": [
+    {
+      "name": "Keisuke SATO",
+      "email": "sato.keisuke@facebook.com",
+      "url": "http://riaf.jp"
+    }
+  ],
+  "licenses": [
+    {
+      "type": "BSD",
+      "url": "http://opensource.org/licenses/BSD-3-Clause"
+    }
+  ],
+  "bugs": "https://github.com/crocos/jquery-tutor/issues",
+  "homepage": "https://github.com/crocos/jquery-tutor",
+  "docs": "https://github.com/crocos/jquery-tutor",
+  "download": "https://github.com/crocos/jquery-tutor",
+  "dependencies": {
+    "jquery": ">=1.5"
+  }
+}

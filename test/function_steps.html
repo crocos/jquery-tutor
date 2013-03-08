@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>jQuery Tutor TEST</title>
+    <link rel="stylesheet" type="text/css" href="components/qunit/qunit.css">
+    <script src="components/jquery/jquery.js"></script>
+    <script src="components/qunit/qunit.js"></script>
+    <script src="../src/jquery.tutor.js"></script>
+  </head>
+  <body>
+    <h1 id="qunit-header">jQuery Tutor TEST</h1>
+    <h2 id="qunit-banner"></h2>
+    <div id="qunit-testrunner-toolbar"></div>
+    <h2 id="qunit-userAgent"></h2>
+    <ol id="qunit-tests"></ol>
+
+    <script>
+      asyncTest('function steps', function() {
+        var counter = 0;
+
+        $.tutor({
+          steps: [
+            function() {
+              equal(1, ++counter);
+            },
+            function(dfd) {
+              setTimeout(function() {
+                equal(2, ++counter);
+                dfd.resolve();
+              }, 1500);
+
+              return dfd.promise();
+            },
+            function() {
+              equal(3, ++counter);
+              start();
+            }
+          ]
+        });
+      });
+    </script>
+  </body>
+</html>

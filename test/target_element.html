@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>jQuery Tutor TEST</title>
+    <link rel="stylesheet" type="text/css" href="components/qunit/qunit.css">
+    <link rel="stylesheet/less" type="text/css" href="../src/jquery.tutor.less" />
+    <script src="components/jquery/jquery.js"></script>
+    <script src="components/qunit/qunit.js"></script>
+    <script src="components/less.js/dist/less-1.3.3.min.js"></script>
+    <script src="../src/jquery.tutor.js"></script>
+  </head>
+  <body>
+    <h1 id="qunit-header">jQuery Tutor TEST</h1>
+    <h2 id="qunit-banner"></h2>
+    <div id="qunit-testrunner-toolbar"></div>
+    <h2 id="qunit-userAgent"></h2>
+    <ol id="qunit-tests"></ol>
+
+    <script>
+      asyncTest('function steps', function() {
+        var counter = 0;
+
+        $.tutor({
+          steps: [
+            {
+              target: '#qunit-header',
+              message: 'This is Title'
+            },
+            {
+              target: '#qunit-banner',
+              message: 'This is Banner'
+            },
+            {
+              target: '#qunit-userAgent',
+              message: 'This is User-Agent'
+            }
+          ]
+        });
+
+        $(function() {
+          equal(1, $('.tutor-overlay').length);
+          equal(1, $('.tutor-message').length);
+
+          $('.tutor-message-btn-next').click();
+
+          setTimeout(function() {
+            equal(1, $('.tutor-overlay').length);
+            equal(1, $('.tutor-message').length);
+
+            equal('This is Banner', $('.tutor-message-body p').text());
+            $('.tutor-message-btn-next').click();
+          }, 1000);
+          setTimeout(function() {
+            $('.tutor-message-btn-next').click();
+            equal(1, $('.tutor-overlay').length);
+            equal(1, $('.tutor-message').length);
+          }, 1500);
+          setTimeout(function() {
+            $('.tutor-message-btn-next').click();
+          }, 2000);
+          setTimeout(function() {
+            equal(0, $('.tutor-overlay').length);
+            equal(0, $('.tutor-message').length);
+            start();
+          }, 3000);
+        });
+      });
+    </script>
+  </body>
+</html>
+
