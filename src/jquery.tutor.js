@@ -91,6 +91,7 @@
               top: targetOffset.top + $target.height() + 50,
               left: targetOffset.left
             }).fadeIn(100);
+            $body.animate({scrollTop: targetOffset.top > 50 ? targetOffset.top -50 : 0});
 
             $message.on('click', '.tutor-message-btn-next', function() {
               $message.fadeOut(100, function() {
