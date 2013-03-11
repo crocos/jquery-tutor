@@ -1,4 +1,4 @@
-jquery-tutor
+jquery-tutor [![Build Status](https://travis-ci.org/crocos/jquery-tutor.png?branch=master)](https://travis-ci.org/crocos/jquery-tutor)
 ============
 
 **EXPERIMENTAL**
