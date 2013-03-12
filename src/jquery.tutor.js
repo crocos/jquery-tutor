@@ -73,7 +73,6 @@
         steps[steps.length] = function() {
           var dfd = $.Deferred()
             , $body = $('body')
-            , bodyOverflow = $body.css('overflow')
             , $target
             , $message
             , $overlay
@@ -85,17 +84,15 @@
             $message = createMessage(def['message']);
             $overlay = createOverlay($target, targetOffset);
 
-            $body.css('overflow', 'hidden');
+            $body.animate({scrollTop: targetOffset.top > 50 ? targetOffset.top -50 : 0});
             $overlay.appendTo($body).show();
             $message.appendTo($body).css({
               top: targetOffset.top + $target.height() + 50,
               left: targetOffset.left
             }).fadeIn(100);
-            $body.animate({scrollTop: targetOffset.top > 50 ? targetOffset.top -50 : 0});
 
             $message.on('click', '.tutor-message-btn-next', function() {
               $message.fadeOut(100, function() {
-                $body.css('overflow', bodyOverflow);
                 $overlay.remove();
                 $message.remove();
                 dfd.resolve();
